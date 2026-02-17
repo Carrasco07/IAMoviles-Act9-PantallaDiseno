@@ -1,0 +1,175 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MuebleriaCarrasco());
+
+class MuebleriaCarrasco extends StatelessWidget {
+  const MuebleriaCarrasco({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Mueblería Carrasco',
+      theme: ThemeData(
+        primarySwatch: Colors.blueGrey,
+        useMaterial3: false, 
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      // BARRA DE NAVEGACIÓN (AZUL GRISÁCEO)
+      appBar: AppBar(
+        title: const Text("Mueblería Carrasco"),
+        backgroundColor: Colors.blueGrey[800],
+        actions: [
+          // Iconos en la parte superior derecha (Agregado el de Perfil)
+          IconButton(icon: const Icon(Icons.person_outline), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.favorite_border), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.shopping_cart_outlined), onPressed: () {}),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Encuentra el mueble ideal",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 15),
+
+            // BARRA DE BÚSQUEDA
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Buscar muebles...',
+                prefixIcon: const Icon(Icons.search),
+                filled: true,
+                fillColor: Colors.grey[100],
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+            const SizedBox(height: 25),
+
+            // CATEGORÍAS
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _categoryChip("Comedor", Icons.table_restaurant),
+                _categoryChip("Recámara", Icons.bed),
+                _categoryChip("Sala", Icons.chair),
+              ],
+            ),
+            const SizedBox(height: 25),
+
+            // CUADRÍCULA DE PRODUCTOS CON IMÁGENES REALES
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 15,
+              childAspectRatio: 0.7, // Ajustado para que quepa la imagen y el texto
+              children: [
+                _productCard(
+                  "Cocina Integral", 
+                  "17,595", 
+                  "https://raw.githubusercontent.com/Carrasco07/IAMoviles-Act9-PantallaDiseno/refs/heads/main/Cocina%20Integral.jpg"
+                ),
+                _productCard(
+                  "Juego de comedor", 
+                  "11,399", 
+                  "https://raw.githubusercontent.com/Carrasco07/IAMoviles-Act9-PantallaDiseno/refs/heads/main/Juego%20de%20comedor.jpg"
+                ),
+                _productCard(
+                  "Closet Matrimonial", 
+                  "19,999", 
+                  "https://raw.githubusercontent.com/Carrasco07/IAMoviles-Act9-PantallaDiseno/refs/heads/main/Closet%20Matrimonial.jpg"
+                ),
+                _productCard(
+                  "Zapatera Moderna", 
+                  "9,609", 
+                  "https://raw.githubusercontent.com/Carrasco07/IAMoviles-Act9-PantallaDiseno/refs/heads/main/Zapatera%20Moderna.jpg"
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.blueGrey[700],
+        child: const Icon(Icons.chat_bubble_outline),
+      ),
+    );
+  }
+
+  Widget _categoryChip(String label, IconData icon) {
+    return Column(
+      children: [
+        CircleAvatar(
+          backgroundColor: Colors.blueGrey[50],
+          child: Icon(icon, color: Colors.blueGrey[800]),
+        ),
+        const SizedBox(height: 5),
+        Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+      ],
+    );
+  }
+
+  Widget _productCard(String name, String price, String imageUrl) {
+    return Card(
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: [
+          Expanded(
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                // Muestra un color gris mientras carga la imagen
+                loadingBuilder: (context, child, progress) {
+                  return progress == null ? child : Container(color: Colors.grey[200]);
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Text(
+                  name, 
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14), 
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  "\$$price.00", 
+                  style: TextStyle(color: Colors.blueGrey[900], fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
