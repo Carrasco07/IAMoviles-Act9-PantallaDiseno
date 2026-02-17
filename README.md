@@ -1,16 +1,8 @@
-# myapp
+# IAMoviles-Act9-PantallaDiseno
 
-A new Flutter project.
+<img width="307" height="492" alt="image" src="https://github.com/user-attachments/assets/502a6147-4770-4c85-9031-2df2d616df67" />
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="1235" height="727" alt="image" src="https://github.com/user-attachments/assets/1edd052c-0daf-468f-837b-5811c430a4bd" />
+<img width="1236" height="665" alt="image" src="https://github.com/user-attachments/assets/86317fb8-16c8-45ed-b8fc-f8ee6fd70b55" />
+<img width="1234" height="467" alt="image" src="https://github.com/user-attachments/assets/ba507b37-6ed5-4fc1-bde9-fc03a2f8f608" />
