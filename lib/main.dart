@@ -38,15 +38,16 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20.0),
+        child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
               "Encuentra el mueble ideal",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 8),
 
             // BARRA DE BÚSQUEDA
             TextField(
@@ -61,7 +62,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 12),
 
             // CATEGORÍAS
             Row(
@@ -72,16 +73,16 @@ class HomePage extends StatelessWidget {
                 _categoryChip("Sala", Icons.chair),
               ],
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 12),
 
             // CUADRÍCULA DE PRODUCTOS CON IMÁGENES REALES
             GridView.count(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 15,
-              childAspectRatio: 0.7, // Ajustado para que quepa la imagen y el texto
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 0.9, // Ajustado para que quepa la imagen y el texto
               children: [
                 _productCard(
                   "Cocina Integral", 
@@ -107,11 +108,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.blueGrey[700],
-        child: const Icon(Icons.chat_bubble_outline),
+        ),
       ),
     );
   }
@@ -120,11 +117,12 @@ class HomePage extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
+          radius: 24,
           backgroundColor: Colors.blueGrey[50],
           child: Icon(icon, color: Colors.blueGrey[800]),
         ),
         const SizedBox(height: 5),
-        Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+        Text(label, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
       ],
     );
   }
@@ -150,12 +148,12 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 Text(
                   name, 
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14), 
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13), 
                   textAlign: TextAlign.center,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
